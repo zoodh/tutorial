@@ -81,12 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Showcase(
               key: _one,
               description: 'Tap to increment!',
-              disableDefaultTargetGestures: true,
+
               onBarrierClick: () =>
                   debugPrint('Barrier clicked'),
               child: ElevatedButton(
                 onPressed: () =>
                     _incrementCounter(),
+
                 child: Text ("press me to increment")
               ),
             ),
@@ -100,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Showcase(
                 key: _two, description: "click me to reset",
+
                 child: ElevatedButton(onPressed: () { setState(() {
                   _counter = 0;
                 });  },
