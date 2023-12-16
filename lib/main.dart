@@ -21,21 +21,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: ShowCaseWidget(
-          onStart: (index, key) {
-            log('onStart: $index, $key');
-          },
-          onComplete: (index, key) {
-            log('onComplete: $index, $key');
-            if (index == 4) {
-              SystemChrome.setSystemUIOverlayStyle(
-                SystemUiOverlayStyle.light.copyWith(
-                  statusBarIconBrightness: Brightness.dark,
-                  statusBarColor: Colors.white,
-                ),
-              );
-            }
-          },
-          blurValue: 1,
           builder: Builder(builder: (context) =>  MyHomePage(title: "title")),
           autoPlayDelay: const Duration(seconds: 3),
         ),
@@ -108,10 +93,19 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Showcase(
+                key: _two, description: "click me to reset",
+                child: ElevatedButton(onPressed: () { setState(() {
+                  _counter = 0;
+                });  },
+                  child: Text ("reset counter"),
+
+            ))
           ],
         ),
       ),
